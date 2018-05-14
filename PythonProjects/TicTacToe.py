@@ -1,6 +1,18 @@
+#Create a Tic Tac Toe game. You are free to use any IDE you like.
 
+#Here are the requirements:
 
+#2 players should be able to play the game (both sitting at the same computer)
+#The board should be printed out every time a player makes a move
+#You should be able to accept input of the player position and then place a symbol on the board
 
+# 1|2|3         
+# -----        
+# 4|5|6         
+# -----        
+# 7|8|9 
+
+#board initialization. I chose dictonary because I want to call with keyword instead of indexing
 board = {'1' : '', '2' : '','3' : '','4' : '', '5' : '','6' : '', '7' : '', '8' : '','9' : ''}
 
 def print_board (player='', move=''):
@@ -56,7 +68,9 @@ while rplay:
     pturn = random.choice([True,False])
     win = False
     print('\nPlayer who goes first is chosen randomly')
+
     while not win:
+        #player 1's turn
         if pturn:
             move = input('\nMake your Move! Player 1! (1-9) : ')
             if space_check(move) :
@@ -65,6 +79,7 @@ while rplay:
             else:
                 print('\nInvalid Move!')
 
+            #check if the player2 won with last move then check if the game is tie
             if win_check(player1):
                 print('\nPlayer 1 is the Winner!')
                 win = True
@@ -72,7 +87,8 @@ while rplay:
                 if not check_tie():
                     print('It is a tie!')
                     break
-                
+
+        #player 2's turn        
         else:
             move = input('\nMake your Move! Player 2! (1-9) : ')
             if space_check(move) :
@@ -81,6 +97,7 @@ while rplay:
             else:
                 print('\nInvalid Move!')
 
+            #check if the player2 won with last move then check if the game is tie
             if win_check(player2):
                 print('\nPlayer 2 is the Winner!')
                 win = True
